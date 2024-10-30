@@ -1,0 +1,11 @@
+{
+  "scripts": {
+    "simple": "nodemon src/simple/index.ts",
+    "better": "nodemon src/better/index.ts"
+  },
+  "devDependencies": {
+    "@types/node": "^22.8.4",
+    "nodemon": "^3.1.7",
+    "typescript": "^5.6.3"
+  }
+}
