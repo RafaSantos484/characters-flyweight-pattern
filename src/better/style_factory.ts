@@ -1,3 +1,4 @@
+import { Color } from "../types";
 import { Style } from "./style";
 
 export class StyleFactory {
@@ -15,7 +16,8 @@ export class StyleFactory {
     return StyleFactory.instance;
   }
 
-  public getStyle(newStyle: Style) {
+  public getStyle(color: Color, isBold: boolean, isItalic: boolean) {
+    const newStyle = new Style(color, isBold, isItalic);
     const style = this.cache.find((s) => s.equals(newStyle));
     if (!!style) {
       return style;

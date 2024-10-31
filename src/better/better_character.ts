@@ -15,7 +15,7 @@ export class BetterCharacter extends Character {
     super(symbol);
 
     const styleFactory = StyleFactory.getInstance();
-    this.style = styleFactory.getStyle(new Style(color, isBold, isItalic));
+    this.style = styleFactory.getStyle(color, isBold, isItalic);
   }
 
   public getColor(): Color {
