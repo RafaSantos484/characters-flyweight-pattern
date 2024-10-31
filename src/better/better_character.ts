@@ -5,29 +5,25 @@ import { Style } from "./style";
 
 export class BetterCharacter extends Character {
   public style: Style;
-  public symbol: string;
 
   constructor(
     color: Color,
     isBold: boolean,
     isItalic: boolean,
-    symbol: string,
-    styleFactory: StyleFactory
+    symbol: string
   ) {
-    super();
+    super(symbol);
 
-    this.style = styleFactory.getStyle(color, isBold, isItalic);
-    this.symbol = symbol;
+    const styleFactory = StyleFactory.getInstance();
+    this.style = styleFactory.getStyle(new Style(color, isBold, isItalic));
   }
 
   public getColor(): Color {
     return this.style.color;
   }
-
   public isBold(): boolean {
     return this.style.isBold;
   }
-
   public isItalic(): boolean {
     return this.style.isItalic;
   }

@@ -1,1 +1,8 @@
-export type Color = "black" | "red" | "green" | "yellow" | "blue" | "white";
+export enum Color {
+  Black,
+  Red,
+  Green,
+  Yellow,
+  Blue,
+  White,
+}

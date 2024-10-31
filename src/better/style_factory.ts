@@ -1,20 +1,28 @@
-import { Color } from "../types";
 import { Style } from "./style";
 
 export class StyleFactory {
-  private cache: { [key: string]: Style };
+  private static instance: StyleFactory | null = null;
+  private cache: Style[];
 
   constructor() {
-    this.cache = {};
+    this.cache = [];
   }
 
-  public getStyle(color: Color, isBold: boolean, isItalic: boolean) {
-    const styleKey = Style.getStyleKey(color, isBold, isItalic);
-    if (!this.cache[styleKey]) {
-      console.log(`Saving style ${styleKey} in cache`);
-      this.cache[styleKey] = new Style(color, isBold, isItalic);
+  public static getInstance() {
+    if (!StyleFactory.instance) {
+      StyleFactory.instance = new StyleFactory();
+    }
+    return StyleFactory.instance;
+  }
+
+  public getStyle(newStyle: Style) {
+    const style = this.cache.find((s) => s.equals(newStyle));
+    if (!!style) {
+      return style;
     }
 
-    return this.cache[styleKey];
+    console.log(`Saving style ${newStyle.toString()} in cache`);
+    this.cache.push(newStyle);
+    return newStyle;
   }
 }

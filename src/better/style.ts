@@ -11,11 +11,15 @@ export class Style {
     this.isItalic = isItalic;
   }
 
-  static getStyleKey(color: Color, isBold: boolean, isItalic: boolean) {
-    return `${color}-${isBold}-${isItalic}`;
+  public equals(style: Style) {
+    return (
+      this.color === style.color &&
+      this.isBold === style.isBold &&
+      this.isItalic === style.isItalic
+    );
   }
 
-  public getStyleKey() {
-    return Style.getStyleKey(this.color, this.isBold, this.isItalic);
+  public toString() {
+    return `${this.color} ${this.isBold} ${this.isItalic}`;
   }
 }

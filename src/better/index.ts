@@ -1,19 +1,17 @@
 import { Document } from "../document";
+import { Color } from "../types";
+import { loremIpsum } from "../utils";
 import { BetterCharacter } from "./better_character";
-import { StyleFactory } from "./style_factory";
 
 const doc = new Document();
-const styleFactory = new StyleFactory();
 for (const ch of "Title\n") {
-  doc.addCharacter(new BetterCharacter("green", true, true, ch, styleFactory));
+  doc.addCharacter(new BetterCharacter(Color.Green, true, true, ch));
 }
 for (const ch of "Subtitle\n\n") {
-  doc.addCharacter(
-    new BetterCharacter("yellow", false, true, ch, styleFactory)
-  );
+  doc.addCharacter(new BetterCharacter(Color.Yellow, false, true, ch));
 }
-for (const ch of "Paragraph...\n") {
-  doc.addCharacter(new BetterCharacter("red", false, false, ch, styleFactory));
+for (const ch of loremIpsum) {
+  doc.addCharacter(new BetterCharacter(Color.Blue, false, false, ch));
 }
 
 doc.print();

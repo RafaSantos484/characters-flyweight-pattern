@@ -6,26 +6,21 @@ export class SimpleCharacter extends Character {
   private bold: boolean;
   private italic: boolean;
 
-  public symbol: string;
-
   constructor(color: Color, bold: boolean, italic: boolean, symbol: string) {
-    super();
+    super(symbol);
 
     this.color = color;
     this.bold = bold;
     this.italic = italic;
-    this.symbol = symbol;
   }
 
-  public getColor() {
+  public getColor(): Color {
     return this.color;
   }
-
-  public isBold() {
+  public isBold(): boolean {
     return this.bold;
   }
-
-  public isItalic() {
+  public isItalic(): boolean {
     return this.italic;
   }
 }
